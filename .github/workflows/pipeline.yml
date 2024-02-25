@@ -36,4 +36,4 @@ jobs:
         run: npm install
 
       - name: Run Dependency-Check
-        uses: dependency-check/dependency-check-action@v2
+        uses: dependency-check/Dependency-Check-Action@1.1.0

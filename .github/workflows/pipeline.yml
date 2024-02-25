@@ -1,1 +1,6 @@
+name: PIPELINE
 
+on:
+
+  push:
+  workflow_dispatch:

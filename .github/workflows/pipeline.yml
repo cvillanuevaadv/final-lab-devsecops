@@ -29,7 +29,11 @@ jobs:
       #timeout-minutes: 5
       #env:
         #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         
+  Escaneo-SCA-con-DependencyCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Hacer el checkout del repositorio'
+        uses: actions/checkout@v4
       - name: Escaneo SCA con DependencyCheck
         uses: actions/dependency-review-action@v4
         with:

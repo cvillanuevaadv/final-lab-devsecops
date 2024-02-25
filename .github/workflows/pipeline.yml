@@ -7,10 +7,14 @@ on:
 
 jobs:
   
-  build:
-    
+  Escaneo-SAST-SONARCLOUD:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Descarga repositorio
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Escaneo SAST en Sonarcloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

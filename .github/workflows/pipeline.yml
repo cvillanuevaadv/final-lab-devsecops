@@ -12,11 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      
-      - name: Instalación de librerías necesarias del proyecto
-        run: npm install
-        
+          fetch-depth: 0    
+       
       - name: Escaneo SAST en Sonarcloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -29,12 +26,14 @@ jobs:
       #timeout-minutes: 5
       #env:
         #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  Escaneo-SCA-con-DependencyCheck:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Hacer el checkout del repositorio'
-        uses: actions/checkout@v4
-      - name: Escaneo SCA con DependencyCheck
-        uses: actions/dependency-review-action@v4
+        
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
         with:
-          fail-on-severity: moderate
+          node-version: '14'
+
+      - name: Instalación de librerías necesarias del proyecto
+        run: npm install
+
+      - name: Run Dependency-Check
+        uses: dependency-check/dependency-check-action@v2

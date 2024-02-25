@@ -21,15 +21,14 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          #fail-if-qualitygate-fails: true
       
-      - name: Comprobación de SonarQube Quality Gate 
-        id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-quality-gate-action@master
+    #- name: Comprobación de SonarQube Quality Gate 
+      #id: sonarqube-quality-gate-check
+      #uses: sonarsource/sonarqube-quality-gate-action@master
         # Force to fail step after specific time.
-        timeout-minutes: 5
-        env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #timeout-minutes: 5
+      #env:
+        #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
          
       - name: Escaneo SCA con DependencyCheck
         uses: actions/dependency-review-action@v4

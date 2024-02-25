@@ -13,7 +13,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          
+      
+      - name: Instalación de librerías necesarias del proyecto
+        run: npm install
+        
       - name: Escaneo SAST en Sonarcloud
         uses: sonarsource/sonarcloud-github-action@master
         env:

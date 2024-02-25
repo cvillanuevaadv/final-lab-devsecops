@@ -68,6 +68,7 @@ jobs:
           image-ref: 'z4nd3r/devsecops:latest'
           format: 'table'
           exit-code: 1
+          severity: 'CRITICAL,HIGH,MEDIUM'
 
       - name: Push Docker
         run: | 

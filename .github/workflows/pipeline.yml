@@ -44,11 +44,27 @@ jobs:
         with:
           path: './package.json'
           format: 'HTML'
-          #failOnCVSS: '6'
+          failOnCVSS: '6'
 
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
-           path: ${{github.workspace}}/reports  
+           path: ${{github.workspace}}/reports
+           
+      - name: Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Build Docker
+        run: |
+          docker build --tag z4nd3r/devsecops:latest .
+
+      - name: Push Docker
+        run: | 
+          docker push z4nd3r/devsecops
+          
+      
 

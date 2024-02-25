@@ -61,6 +61,13 @@ jobs:
       - name: Build Docker
         run: |
           docker build --tag z4nd3r/devsecops:latest .
+          
+      - name: Ejecución de Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'z4nd3r/devsecops:latest'
+          format: 'table'
+          exit-code: 1
 
       - name: Push Docker
         run: | 

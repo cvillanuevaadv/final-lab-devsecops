@@ -15,6 +15,6 @@ jobs:
           fetch-depth: 0
           
       - name: Escaneo SAST en Sonarcloud
-        uses: sonarsource/sonarcloud-github-action@feature-carlosvillanueva
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

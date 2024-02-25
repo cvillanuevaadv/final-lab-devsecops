@@ -4,3 +4,13 @@ on:
 
   push:
   workflow_dispatch:
+
+jobs:
+  
+  build:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descarga repositorio
+        uses: actions/checkout@v3

@@ -74,5 +74,17 @@ jobs:
         run: | 
           docker push z4nd3r/devsecops
           
-      
+  Deploy:
+    needs: Build
+    runs-on: self-hosted
+    
+    steps:
+
+    - name: Pull de la Imagen Docker
+      run: |
+        docker pull z4nd3r/devsecops:latest
+
+    - name: Despliegue de la Aplicación
+      run: |
+        docker run -p 8081:80 --name lab-final-devsecops -d z4nd3r/devsecops:latest
 

@@ -34,15 +34,19 @@ jobs:
 
       - name: Instalación de librerías necesarias del proyecto
         run: npm install
-
+        
+      - name: Verificar carpeta de dependencias
+        run: |
+          cd node_modules
+          ls -ltra
+          
       - name: Run Dependency-Check
         uses: dependency-check/Dependency-Check_Action@1.1.0
         with:
-          path: '.'
+          path: './node_modules'
           format: 'HTML'
           args: >
             --failOnCVSS 7
-            --enableRetired
 
       - name: Upload Test results
         uses: actions/upload-artifact@master

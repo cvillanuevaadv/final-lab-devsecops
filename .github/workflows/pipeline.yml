@@ -35,14 +35,10 @@ jobs:
       - name: Instalación de librerías necesarias del proyecto
         run: npm install
 
-      - name: Verificar ruta de package.json
-        run: |
-          ls -ltra
-
       - name: Run Dependency-Check
         uses: dependency-check/Dependency-Check_Action@1.1.0
         with:
-          path: './package.json'
+          path: '.'
           format: 'HTML'
           failOnCVSS: '6'
 

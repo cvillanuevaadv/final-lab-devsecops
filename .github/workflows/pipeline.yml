@@ -87,9 +87,6 @@ jobs:
     - name: Despliegue de la Aplicación
       run: |
         docker run -p 8081:80 --name lab-final-devsecops -d z4nd3r/devsecops:latest
-    - name: Verificar ruta de package.json
-      run: |
-        npm install touch-cli -g
 
     - name: Sleep para Escaneo DAST
       run: | 

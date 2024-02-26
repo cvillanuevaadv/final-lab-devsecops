@@ -88,3 +88,12 @@ jobs:
       run: |
         docker run -p 8081:80 --name lab-final-devsecops -d z4nd3r/devsecops:latest
 
+    - name: Sleep para Escaneo DAST
+      run: | 
+        sleep 12 
+
+    - name: Escaneo DAST con OWASP ZAP
+      uses: zaproxy/action-baseline@v0.11.0
+      with:
+        target: 'http://localhost:8081'
+

@@ -49,14 +49,21 @@ jobs:
           ls -ltra
           cat package.json
           
-      - name: Run Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@1.1.0
+      #- name: Run Dependency-Check
+        #uses: dependency-check/Dependency-Check_Action@1.1.0
+        #with:
+          #project: 'lab-final'
+          #path: '.'
+          #format: 'HTML'
+          #args: >
+            #--failOnCVSS 7
+            
+      - name: Escaneo SCA con SNYK
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          project: 'lab-final'
-          path: '.'
-          format: 'HTML'
-          args: >
-            --failOnCVSS 7
+          args: --severity-threshold=low
 
       - name: Upload Test results
         uses: actions/upload-artifact@master

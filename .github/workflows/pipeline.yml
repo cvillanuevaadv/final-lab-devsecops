@@ -32,23 +32,9 @@ jobs:
         with:
           node-version: '14'
           
-      - name: Verificar carpeta de dependencias 1
-        run: |
-          ls -ltra
-
       - name: Instalación de librerías necesarias del proyecto
-        run: npm install
-        
-      - name: Verificar carpeta de dependencias 2
-        run: |
-          cd node_modules
-          ls -ltra
-
-      - name: Leer package.json
-        run: |
-          ls -ltra
-          cat package.json
-          
+        run: npm install      
+         
       #- name: Run Dependency-Check
         #uses: dependency-check/Dependency-Check_Action@1.1.0
         #with:
@@ -63,14 +49,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=high,critical
-
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
-        with:
-           name: Depcheck report
-           path: ${{github.workspace}}/reports
-           
+          args: --severity-threshold=medium
+          
       - name: Docker Login
         uses: docker/login-action@v3.0.0
         with:

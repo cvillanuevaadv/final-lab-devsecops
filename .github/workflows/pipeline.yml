@@ -44,7 +44,7 @@ jobs:
         uses: dependency-check/Dependency-Check_Action@1.1.0
         with:
           project: 'lab-final'
-          path: '${{github.workspace}}/package.json'
+          path: '/github/workspace/package.json'
           format: 'HTML'
           args: >
             --failOnCVSS 7

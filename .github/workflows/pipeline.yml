@@ -31,20 +31,30 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
+          
+      - name: Verificar carpeta de dependencias 1
+        run: |
+          cd node_modules
+          ls -ltra
 
       - name: Instalación de librerías necesarias del proyecto
         run: npm install
         
-      - name: Verificar carpeta de dependencias
+      - name: Verificar carpeta de dependencias 2
         run: |
           cd node_modules
           ls -ltra
+
+      - name: Leer package.json
+        run: |
+          ls -ltra
+          cat package.json
           
       - name: Run Dependency-Check
         uses: dependency-check/Dependency-Check_Action@1.1.0
         with:
           project: 'lab-final'
-          path: '/github/workspace/package.json'
+          path: './package.json'
           format: 'HTML'
           args: >
             --failOnCVSS 7

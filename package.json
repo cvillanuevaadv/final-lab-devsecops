@@ -24,7 +24,6 @@
     "video.js": "^8.3.0",
     "videojs-youtube": "^3.0.1",
     "vite-tsconfig-paths": "^3.5.2",
-    "node-fetch": "^3.2.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

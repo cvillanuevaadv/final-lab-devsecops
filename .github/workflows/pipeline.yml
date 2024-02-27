@@ -34,7 +34,6 @@ jobs:
           
       - name: Verificar carpeta de dependencias 1
         run: |
-          cd node_modules
           ls -ltra
 
       - name: Instalación de librerías necesarias del proyecto
